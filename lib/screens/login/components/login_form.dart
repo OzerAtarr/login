@@ -21,22 +21,23 @@ class LoginForm extends StatelessWidget {
       child: Align(
         alignment: Alignment.center,
         child: Container(
+          padding: const EdgeInsets.only(left: 10, right: 10),
           width: size.width,
           height: defaultLoginSize,
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 'HOŞGELDİNİZ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: size.height/30),
               ),
-              SizedBox(height: 40),
+              SizedBox(height: size.width / 30),
               RoundedInput(icon: Icons.mail, hint: 'Kullanıcı Adı'),
               RoundedPasswordInput(hint: 'Şifre'),
-              SizedBox(height: 10),
+              SizedBox(height: size.width / 62.3),
               RoundedButton(title: 'Giriş Yap'),
-              SizedBox(height: 10),
+              SizedBox(height: size.width / 62.3),
             ],
           ),
         ),

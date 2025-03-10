@@ -52,15 +52,14 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: dimensions.height100),
                 Image.asset(
                   "assets/images/logo3.png",
-                  width: 250,
-                  height: 250,
+                  width: dimensions.width250,
+                  height: dimensions.height250,
                 ),
-                SizedBox(height: 10),
                 Align(
                   alignment: Alignment.center,
                   child: Container(
-                    width: 420,
-                    height: 360,
+                    width: dimensions.width * 0.7,
+                    height: dimensions.height * 0.43,
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: kPrimaryColor.withOpacity(0.3),
@@ -71,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                         BoxShadow(
                           color: kPrimaryColor.withOpacity(0.1),
                           blurRadius: 20,
-                          offset: Offset(0, 10),
+                          offset: const Offset(0, 10),
                         ),
                       ],
                     ),

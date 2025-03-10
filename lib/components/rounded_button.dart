@@ -26,7 +26,7 @@ class RoundedButton extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           title,
-          style: const TextStyle(color: Colors.white, fontSize: 18),
+          style: const TextStyle(color: Colors.white, fontSize: 16),
         ),
       ),
     );
