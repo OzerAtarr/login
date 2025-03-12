@@ -10,25 +10,28 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
-  late Animation<double> animation;
   late AnimationController controller;
+  late Animation<double> animation;
   late Dimensions dimensions;
 
   @override
   void initState() {
     super.initState();
 
-    // Initialize the animation controller for fading in
-    controller = AnimationController(vsync: this, duration: const Duration(seconds: 3))
-      ..forward();
+    // Animasyon kontrolcüsü: 3 saniye içinde ileri ve geri oynatılacak
+    controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    );
 
-    // Opacity animation to make the splash screen fade in
-    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeInOut);
 
-    // Splash screen will navigate to the login screen after 3 seconds
+    controller.forward();
+
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(
-          context, RouteHelper.initial); // Navigate to login screen
+      controller.reverse().then((_) {
+        Navigator.pushReplacementNamed(context, RouteHelper.initial);
+      });
     });
   }
 
@@ -41,9 +44,9 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black, // Black background to start with
+      backgroundColor: Colors.white,
       body: FadeTransition(
-        opacity: animation, // Fade-in effect
+        opacity: animation,
         child: Center(
           child: Image.asset(
             "assets/images/logo.png",
@@ -53,5 +56,10 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
       ),
     );
   }
-}
 
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+}

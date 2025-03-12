@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                   alignment: Alignment.center,
                   child: Container(
                     width: dimensions.width * 0.7,
-                    height: dimensions.height * 0.43,
+                    height: dimensions.height * 0.55,
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: kPrimaryColor.withOpacity(0.3),
