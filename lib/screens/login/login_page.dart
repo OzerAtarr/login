@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login/constants.dart';
 import 'package:login/screens/login/components/login_form.dart';
-import 'package:login/utils/dimensions.dart'; // Dimensions'ı import et
+import 'package:login/utils/dimensions.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,7 +11,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  @override
   late Dimensions dimensions;
 
   @override
@@ -19,6 +18,7 @@ class _LoginPageState extends State<LoginPage> {
     dimensions = Dimensions(context);
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Stack(
         children: [
           Positioned(
@@ -47,40 +47,42 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Align(
             alignment: Alignment.center,
-            child: Column(
-              children: [
-                SizedBox(height: dimensions.height100),
-                Image.asset(
-                  "assets/images/logo3.png",
-                  width: dimensions.width250,
-                  height: dimensions.height250,
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Container(
-                    width: dimensions.width * 0.7,
-                    height: dimensions.height * 0.55,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: kPrimaryColor.withOpacity(0.3),
-                        width: 5,
-                      ),
-                      borderRadius: BorderRadius.circular(dimensions.height50),
-                      boxShadow: [
-                        BoxShadow(
-                          color: kPrimaryColor.withOpacity(0.1),
-                          blurRadius: 20,
-                          offset: const Offset(0, 10),
+            child: SingleChildScrollView( // SingleChildScrollView eklendi
+              child: Column(
+                children: [
+                  SizedBox(height: dimensions.height100),
+                  Image.asset(
+                    "assets/images/logo3.png",
+                    width: dimensions.width250,
+                    height: dimensions.height250,
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: dimensions.width * 0.7,
+                      height: dimensions.height * 0.45,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: kPrimaryColor.withOpacity(0.3),
+                          width: 5,
                         ),
-                      ],
-                    ),
-                    child: LoginForm(
-                      size: Size(dimensions.width, dimensions.height),
-                      defaultLoginSize: dimensions.defaultLoginSize,
+                        borderRadius: BorderRadius.circular(dimensions.height50),
+                        boxShadow: [
+                          BoxShadow(
+                            color: kPrimaryColor.withOpacity(0.1),
+                            blurRadius: 20,
+                            offset: const Offset(0, 10),
+                          ),
+                        ],
+                      ),
+                      child: LoginForm(
+                        size: Size(dimensions.width, dimensions.height),
+                        defaultLoginSize: dimensions.defaultLoginSize,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
